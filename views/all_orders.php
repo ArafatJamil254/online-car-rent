@@ -4,7 +4,10 @@
     if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
         header('location: login.php');
     }
-    $orders = getAllOrders();
+    $status = $_GET['status'];
+    $date = $_GET['date'];
+
+    $orders = getAllOrders($status, $date);
 ?>
 
 <h2>All Rent Order History</h2>
