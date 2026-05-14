@@ -1,0 +1,120 @@
+/* ── General ── */
+body {
+  font-family: Arial, sans-serif;
+  margin: 30px;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #2196f3;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #1565c0;
+}
+
+.btn-green {
+  background: #4caf50;
+}
+
+.btn-green:hover {
+  background: #388e3c;
+}
+
+.btn-red {
+  background: #f44336;
+}
+
+.btn-red:hover {
+  background: #c62828;
+}
+
+/* ── Forms ── */
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+input[type="date"],
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  padding: 8px;
+  width: 220px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #388e3c;
+}
+
+.error {
+  color: red;
+  margin-top: 6px;
+  display: block;
+}
+
+/* ── Car Detail ── */
+.car-img {
+  width: 350px;
+  border-radius: 8px;
+}
+
+.car-info {
+  margin-top: 15px;
+}
+
+.car-info p {
+  font-size: 16px;
+  margin: 6px 0;
+}
+
+/* ── Cost Display (order form) ── */
+#cost_display {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #2196f3;
+}
