@@ -30,16 +30,16 @@
     <nav>
         <a href="home.php">Home</a>
         <a href="rental_history.php">My Rentals</a>
-        <a href="../controller/logout.php">Logout</a>
+        <a href="../controllers/logout.php">Logout</a>
     </nav>
 
     <h2><?php echo $car['name']; ?> — <?php echo $car['model']; ?></h2>
 
     <?php if($car['image_path'] != ""){ ?>
-        <img class="car-img" src="../assets/cars?php echo $car['image_path']; ?>" alt="Car Image">
+        <img class="car-img" src="../assets/cars<?php echo $car['image_path']; ?>" alt="Car Image">
     <?php } ?>
 
-    <div class="info">
+    <div class="car-info">
         <p><strong>Type:</strong> <?php echo $car['type']; ?></p>
         <p><strong>Price per day:</strong> BDT <?php echo $car['price_per_day']; ?></p>
         <p><strong>Availability:</strong> <?php echo $car['availability_status']; ?></p>

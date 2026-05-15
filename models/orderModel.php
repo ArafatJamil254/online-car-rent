@@ -34,7 +34,7 @@
 
     function confirmOrder($order_id, $payment_method){
         $conn = getConnection();
-        $sql = "UPDATE orders SET status='connfirmed', payment_method='{$payment_method}' WHERE id='{$order_id}'";
+        $sql = "UPDATE orders SET status='confirmed', payment_method='{$payment_method}' WHERE id='{$order_id}'";
         return mysqli_query($conn, $sql);
     }
 

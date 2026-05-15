@@ -11,7 +11,7 @@ function calcCost() {
   var xhttp = new XMLHttpRequest();
   xhttp.open(
     "get",
-    "../api/calculate_cost.php?car_id=" +
+    "../controllers/calculate_cost.php?car_id=" +
       car_id +
       "&start_date=" +
       start_date +
