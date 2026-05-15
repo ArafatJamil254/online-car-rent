@@ -1,3 +1,3 @@
 <?php 
-header('location: view/car_details.php');
+header('location: views/car_details.php');
 ?>

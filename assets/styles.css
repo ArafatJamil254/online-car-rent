@@ -118,3 +118,85 @@ input[type="submit"]:hover {
   font-size: 18px;
   color: #2196f3;
 }
+/* ── Invoice ── */
+.invoice-box {
+  border: 1px solid #ccc;
+  padding: 25px;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
+.invoice-box p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.status-pending {
+  font-weight: bold;
+  color: #ff9800;
+}
+
+#cancel_msg {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* ── Payment Summary ── */
+.summary {
+  border: 1px solid #ccc;
+  padding: 15px;
+  max-width: 450px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: #f9f9f9;
+}
+
+.summary p {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+input[type="radio"] {
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+/* ── Payment Success ── */
+.success-box {
+  border: 2px solid #4caf50;
+  padding: 25px;
+  max-width: 500px;
+  border-radius: 8px;
+  background: #f1fff1;
+}
+
+.success-box h2 {
+  color: #388e3c;
+  margin-bottom: 15px;
+}
+
+.success-box p {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+/* ── Badges ── */
+.badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.badge-confirmed {
+  background: #4caf50;
+}
+
+.badge-cancelled {
+  background: #f44336;
+}
+
+.badge-pending {
+  background: #ff9800;
+}

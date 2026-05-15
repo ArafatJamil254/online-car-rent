@@ -1,10 +1,10 @@
 <?php
     session_start();
-    require_once('../model/carModel.php');
-    if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
-        header('location: login.php');
-        exit;
-    }
+    require_once(__DIR__.'\..\models\carModel.php');
+    // if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
+    //     header('location: login.php');
+    //     exit;
+    // }
 
     if(!isset($_REQUEST['car_id']) || empty($_REQUEST['car_id'])){
     echo "Car not found! Missing car ID.";
@@ -23,7 +23,7 @@
 <html lang="en">
 <head>
     <title>Car Details</title>
-    <link rel="stylesheet" href="../assset/styles.css">
+    <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
 
@@ -36,7 +36,7 @@
     <h2><?php echo $car['name']; ?> — <?php echo $car['model']; ?></h2>
 
     <?php if($car['image_path'] != ""){ ?>
-        <img class="car-img" src="../public/uploads/cars/<?php echo $car['image_path']; ?>" alt="Car Image">
+        <img class="car-img" src="../assets/cars?php echo $car['image_path']; ?>" alt="Car Image">
     <?php } ?>
 
     <div class="info">

@@ -1,12 +1,16 @@
 <?php
     session_start();
-    require_once('../model/orderModel.php');
-    require_once('../model/carModel.php');
+     // TEMPORARY — fake login for testing
+    // DEBUG — show what's in the session
+    $_SESSION['user_id'] = 1;
+    $_SESSION['role'] = 'member';
+    require_once('../models/orderModel.php');
+    require_once('../models/carModel.php');
 
-    if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
-        header('location: ../view/login.php');
-        exit;
-    }
+    // if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
+    //     header('location: ../view/login.php');
+    //     exit;
+    // }
 
     if(isset($_POST['order'])){
 
@@ -50,7 +54,7 @@
         $order_id = placeOrder($order);
 
         if($order_id){
-            header("location: ../view/invoice.php?order_id={$order_id}");
+            header("location: ../views/invoice.php?order_id={$order_id}");
         }else{
             echo "Order failed! Try again.";
         }

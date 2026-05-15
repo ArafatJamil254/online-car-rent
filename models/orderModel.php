@@ -1,6 +1,6 @@
 <?php
 
-    require_once(__DIR__.'/../config/db.php');
+    require_once(__DIR__. '\db.php');
 
     function placeOrder($order){
         $conn = getConnection();
@@ -32,7 +32,7 @@
         return mysqli_query($conn, $sql);
     }
 
-    function connfirmOrder($order_id, $payment_method){
+    function confirmOrder($order_id, $payment_method){
         $conn = getConnection();
         $sql = "UPDATE orders SET status='connfirmed', payment_method='{$payment_method}' WHERE id='{$order_id}'";
         return mysqli_query($conn, $sql);
