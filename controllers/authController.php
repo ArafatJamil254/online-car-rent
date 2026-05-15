@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../models/userModel.php';
+require_once ('../models/userModel.php');
 
 $action = $_GET['action'] ?? '';
 

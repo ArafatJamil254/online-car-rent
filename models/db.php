@@ -1,10 +1,11 @@
 <?php
+$host='localhost';
+$user='root';
+$password='';
+$db='online-car-rent';
 function getConnection(){
-    $host = "localhost";
-    $user = "root";
-    $pass = "";
-    $db = "online_car_rent";
-    $con = mysqli_connect($host, $user, $pass, $db);
+    global $host, $user, $password, $db;
+    $con = mysqli_connect($host, $user, $password, $db);
     if(!$con){
         die("Database connection failed: " . mysqli_connect_error());
     }

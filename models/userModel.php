@@ -1,11 +1,10 @@
 <?php
-require_once ('db.php');
-
+require_once('db.php');
 function findUserByEmail($email) {
-    global $conn;
+    $con = getConnection();
 
     $sql = "SELECT * FROM users WHERE email = ?";
-    $stmt = mysqli_prepare($conn, $sql);
+    $stmt = mysqli_prepare($con, $sql);
 
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
@@ -15,12 +14,12 @@ function findUserByEmail($email) {
 }
 
 function createUser($name, $email, $password_hash, $role, $address, $phone) {
-    global $conn;
+    $con = getConnection();
 
     $sql = "INSERT INTO users (name, email, password_hash, role, address, phone)
             VALUES (?, ?, ?, ?, ?, ?)";
 
-    $stmt = mysqli_prepare($conn, $sql);
+    $stmt = mysqli_prepare($con, $sql);
 
     mysqli_stmt_bind_param(
         $stmt,

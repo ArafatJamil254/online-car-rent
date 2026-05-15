@@ -64,7 +64,7 @@ function uploadImage($file, $folder){
     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
     $name = time() . '_' . rand(1,999) . '.' . $ext;
     $target = '../public/uploads/' . $folder . '/' . $name;
-    
+
     if(move_uploaded_file($file['tmp_name'], $target)){
         return 'public/uploads/' . $folder . '/' . $name;
     }
