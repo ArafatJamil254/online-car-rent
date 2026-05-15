@@ -1,16 +1,13 @@
 <?php
     session_start();
-     // TEMPORARY — fake login for testing
-    // DEBUG — show what's in the session
-    $_SESSION['user_id'] = 1;
-    $_SESSION['role'] = 'member';
+    
     require_once('../models/orderModel.php');
     require_once('../models/carModel.php');
 
-    // if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
-    //     header('location: ../view/login.php');
-    //     exit;
-    // }
+    if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
+        header('location: ../view/login.php');
+        exit;
+    }
 
     if(isset($_POST['order'])){
 

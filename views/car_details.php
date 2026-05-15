@@ -1,10 +1,10 @@
 <?php
     session_start();
     require_once(__DIR__.'\..\models\carModel.php');
-    // if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
-    //     header('location: login.php');
-    //     exit;
-    // }
+    if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
+        header('location: login.php');
+        exit;
+    }
 
     if(!isset($_REQUEST['car_id']) || empty($_REQUEST['car_id'])){
     echo "Car not found! Missing car ID.";
