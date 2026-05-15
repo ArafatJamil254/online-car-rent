@@ -1,6 +1,5 @@
 <?php
-<<<<<<< HEAD
-require_once __DIR__ . '/../config/db.php';
+require_once ('db.php');
 
 function findUserByEmail($email) {
     global $conn;
@@ -36,9 +35,8 @@ function createUser($name, $email, $password_hash, $role, $address, $phone) {
 
     return mysqli_stmt_execute($stmt);
 }
-?>
-=======
-require_once('db.php');
+
+//task2-23-54253-3(get all members)
 function getAllMembers(){
     $con = getConnection();
     $role = 'member';
@@ -48,6 +46,7 @@ function getAllMembers(){
     mysqli_stmt_execute($stmt);
     return mysqli_stmt_get_result($stmt);
 }
+//task2-23-54253-3(delete member)
 function deleteMember($id){
     $con = getConnection();
     $role = 'member';
@@ -56,5 +55,12 @@ function deleteMember($id){
     mysqli_stmt_bind_param($stmt, "is", $id, $role);
     return mysqli_stmt_execute($stmt);
 }
+//task2-23-54253-3(count members)
+function countMembers(){
+    $con = getConnection();
+    $result = mysqli_query($con, "select count(*) as total from users where role='member'");
+    $row = mysqli_fetch_assoc($result);
+    return $row['total'];
+}
 ?>
->>>>>>> origin/main
+

@@ -15,9 +15,9 @@
     Status:
     <select name="status">
         <option value="">All</option>
-        <?php foreach(['pending','confirmed','cancelled'] as $s){ ?>
-        <option value="<?php echo $s; ?>" <?php if($status==$s){echo 'selected';}?>><?php echo $s; ?></option>
-        <?php } ?>
+        <option value="pending" <?php if($status=='pending'){echo 'selected';}?>>Pending</option>
+        <option value="confirmed" <?php if($status=='confirmed'){echo 'selected';}?>>Confirmed</option>
+        <option value="cancelled" <?php if($status=='cancelled'){echo 'selected';}?>>Cancelled</option>
     </select>
     Date: <input type="date" name="date" value="<?php echo htmlspecialchars($date); ?>">
     <input type="submit" value="Filter">

@@ -1,6 +1,6 @@
 <?php
 require_once('db.php');
-
+//task2-23-54253-3(get all orders)
 function getAllOrders($status='', $date=''){
     $con = getConnection();
     if($status != '' && $date != ''){
@@ -21,5 +21,12 @@ function getAllOrders($status='', $date=''){
     }
     mysqli_stmt_execute($stmt);
     return mysqli_stmt_get_result($stmt);
+}
+//task2-23-54253-3(count orders)
+function countOrders(){
+    $con = getConnection();
+    $result = mysqli_query($con, "select count(*) as total from orders");
+    $row = mysqli_fetch_assoc($result);
+    return $row['total'];
 }
 ?>
