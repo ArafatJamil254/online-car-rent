@@ -1,5 +1,6 @@
 <?php
 require_once('db.php');
+//task2-23-54253-3(get all members)
 function getAllMembers(){
     $con = getConnection();
     $role = 'member';
@@ -9,6 +10,7 @@ function getAllMembers(){
     mysqli_stmt_execute($stmt);
     return mysqli_stmt_get_result($stmt);
 }
+//task2-23-54253-3(delete member)
 function deleteMember($id){
     $con = getConnection();
     $role = 'member';
@@ -16,5 +18,12 @@ function deleteMember($id){
     $stmt = mysqli_prepare($con, $sql);
     mysqli_stmt_bind_param($stmt, "is", $id, $role);
     return mysqli_stmt_execute($stmt);
+}
+//task2-23-54253-3(count members)
+function countMembers(){
+    $con = getConnection();
+    $result = mysqli_query($con, "select count(*) as total from users where role='member'");
+    $row = mysqli_fetch_assoc($result);
+    return $row['total'];
 }
 ?>
