@@ -12,6 +12,7 @@
     }
     $car_id = (int)$_GET['car_id'];
     $car = getCarById($car_id);
+    $car = getCarByIdAssoc($car_id);
 
     if(!$car){
         echo "Car not found!";

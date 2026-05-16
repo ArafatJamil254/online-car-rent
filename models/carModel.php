@@ -49,6 +49,19 @@ function deleteCar($id){
     mysqli_stmt_bind_param($stmt, "i", $id);
     return mysqli_stmt_execute($stmt);
 }
+//task2-23-54253-3(get car for member)
+function getCarByIdAssoc($car_id){
+    $con = getConnection();
+    $sql = "SELECT * FROM cars WHERE id=?";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $car_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if(mysqli_num_rows($result)==1){
+        return mysqli_fetch_assoc($result);
+    }
+    return null;
+}
 //task2-23-54253-3(count cars)
 function countCars(){
     $con = getConnection();
