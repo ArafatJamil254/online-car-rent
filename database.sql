@@ -1,6 +1,6 @@
 -- ============================================================
 --  Online Car Rent — Full Database
---  Database : car_rent_project
+--  Database : online_car_rent
 --  Compatible with: MySQL 5.7+ / MariaDB 10.4+
 --  Matches: Project 05 spec (Tasks 1-4)
 -- ============================================================
@@ -12,9 +12,9 @@ SET NAMES utf8mb4;
 -- ------------------------------------------------------------
 -- Create & select database
 -- ------------------------------------------------------------
-CREATE DATABASE IF NOT EXISTS `car_rent_project`
+CREATE DATABASE IF NOT EXISTS `online_car_rent`
   CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `car_rent_project`;
+USE `online_car_rent`;
 
 -- ------------------------------------------------------------
 -- Drop tables in safe order (children first)
@@ -147,3 +147,12 @@ INSERT INTO `cars` (`name`, `model`, `type`, `price_per_day`, `availability_stat
 ('Honda Civic',     'RS 2023',      'Private car', 4000.00, 'unavailable', 'Sporty sedan currently in maintenance'),
 ('Toyota Land Cruiser', 'V8 2022',  'SUV',         9000.00, 'available',   'Premium SUV for off-road trips'),
 ('Mercedes-Benz',   'E-Class 2023', 'Luxury car',  12000.00,'available',   'Executive luxury sedan');
+
+CREATE TABLE IF NOT EXISTS remember_tokens (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  token_hash VARCHAR(255) NOT NULL,
+  expires_at DATETIME NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
