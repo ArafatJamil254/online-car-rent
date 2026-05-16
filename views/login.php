@@ -1,20 +1,12 @@
 <?php
 session_start();
+include('header.php');
 
 $error = $_SESSION['error'] ?? "";
 $success = $_SESSION['success'] ?? "";
 
 unset($_SESSION['error'], $_SESSION['success']);
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login | Online Car Rent</title>
-    <link rel="stylesheet" href="../assets/auth.css">
-</head>
-<body>
 
 <div class="auth-box">
     <h2>Login</h2>
@@ -51,5 +43,4 @@ unset($_SESSION['error'], $_SESSION['success']);
 </div>
 
 <script src="../assets/ajax.js"></script>
-</body>
-</html>
+<?php include('footer.php'); ?>
