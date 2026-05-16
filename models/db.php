@@ -2,7 +2,7 @@
 $host='localhost';
 $user='root';
 $password='';
-$db='car_rent_project';
+$db='online_car_rent';
 function getConnection(){
     global $host, $user, $password, $db;
     $con = mysqli_connect($host, $user, $password, $db);
