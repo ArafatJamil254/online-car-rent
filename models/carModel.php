@@ -56,4 +56,28 @@ function countCars(){
     $row = mysqli_fetch_assoc($result);
     return $row['total'];
 }
+
+// task1-23-53651-3(featured cars for home page)
+function task1GetFeaturedCars(){
+    $con = getConnection();
+    $sql = "select * from cars order by id desc limit 6";
+    return mysqli_query($con, $sql);
+}
+
+// task1-23-53651-3(category list for home page)
+function task1GetCarCategories(){
+    $con = getConnection();
+    $sql = "select distinct type from cars where type is not null and type != '' order by type asc";
+    return mysqli_query($con, $sql);
+}
+
+// task1-23-53651-3(cars by category for ajax)
+function task1GetCarsByCategory($type){
+    $con = getConnection();
+    $sql = "select * from cars where type = ? order by id desc";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $type);
+    mysqli_stmt_execute($stmt);
+    return mysqli_stmt_get_result($stmt);
+}
 ?>
