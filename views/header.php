@@ -24,6 +24,7 @@
             <a href="manage_cars.php">Manage Cars</a>
             <a href="members.php">Members</a>
             <a href="all_orders.php">All Orders</a>
+            <a href="profile.php">Profile</a>
             <a href="blog.php">Blog</a>
             <a href="../controllers/authController.php?action=logout">Logout</a>
 
