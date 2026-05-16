@@ -1,6 +1,6 @@
 -- ============================================================
 --  Online Car Rent — Full Database
---  Database : car_rent_project
+--  Database : online_car_rent
 --  Compatible with: MySQL 5.7+ / MariaDB 10.4+
 --  Matches: Project 05 spec (Tasks 1-4)
 -- ============================================================
@@ -12,9 +12,9 @@ SET NAMES utf8mb4;
 -- ------------------------------------------------------------
 -- Create & select database
 -- ------------------------------------------------------------
-CREATE DATABASE IF NOT EXISTS `car_rent_project`
+CREATE DATABASE IF NOT EXISTS `online_car_rent`
   CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `car_rent_project`;
+USE `online_car_rent`;
 
 -- ------------------------------------------------------------
 -- Drop tables in safe order (children first)
