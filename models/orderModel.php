@@ -1,56 +1,32 @@
 <?php
-
-    require_once(__DIR__. '\db.php');
-
-    function placeOrder($order){
-        $conn = getConnection();
-        $sql = "INSERT INTO orders (user_id, car_id, start_date, end_date, total_cost, status, order_date)
-                VALUES ('{$order['user_id']}', '{$order['car_id']}', '{$order['start_date']}',
-                        '{$order['end_date']}', '{$order['total_cost']}', 'pending', NOW())";
-        if(mysqli_query($conn, $sql)){
-            return mysqli_insert_id($conn);
-        }
-        return false;
+require_once('db.php');
+//task2-23-54253-3(get all orders)
+function getAllOrders($status='', $date=''){
+    $con = getConnection();
+    if($status != '' && $date != ''){
+        $sql = "select orders.*, users.name as member_name, cars.name as car_name, cars.model from orders join users on orders.user_id=users.id join cars on orders.car_id=cars.id where orders.status=? and orders.start_date=? order by orders.id desc";
+        $stmt = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($stmt, "ss", $status, $date);
+    }else if($status != ''){
+        $sql = "select orders.*, users.name as member_name, cars.name as car_name, cars.model from orders join users on orders.user_id=users.id join cars on orders.car_id=cars.id where orders.status=? order by orders.id desc";
+        $stmt = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $status);
+    }else if($date != ''){
+        $sql = "select orders.*, users.name as member_name, cars.name as car_name, cars.model from orders join users on orders.user_id=users.id join cars on orders.car_id=cars.id where orders.start_date=? order by orders.id desc";
+        $stmt = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $date);
+    }else{
+        $sql = "select orders.*, users.name as member_name, cars.name as car_name, cars.model from orders join users on orders.user_id=users.id join cars on orders.car_id=cars.id order by orders.id desc";
+        $stmt = mysqli_prepare($con, $sql);
     }
-
-    function getOrderById($order_id){
-        $conn = getConnection();
-        $sql = "SELECT o.*, c.name AS car_name, c.model, c.price_per_day, c.image_path
-                FROM orders o
-                JOIN cars c ON o.car_id = c.id
-                WHERE o.id='{$order_id}'";
-        $result = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($result) == 1){
-            return mysqli_fetch_assoc($result);
-        }
-        return null;
-    }
-
-    function cancelOrder($order_id){
-        $conn = getConnection();
-        $sql = "UPDATE orders SET status='cancelled' WHERE id='{$order_id}'";
-        return mysqli_query($conn, $sql);
-    }
-
-    function confirmOrder($order_id, $payment_method){
-        $conn = getConnection();
-        $sql = "UPDATE orders SET status='confirmed', payment_method='{$payment_method}' WHERE id='{$order_id}'";
-        return mysqli_query($conn, $sql);
-    }
-
-    function getRentalHistoryByUser($user_id){
-        $conn = getConnection();
-        $sql = "SELECT o.*, c.name AS car_name, c.model
-                FROM orders o
-                JOIN cars c ON o.car_id = c.id
-                WHERE o.user_id='{$user_id}'
-                ORDER BY o.order_date DESC";
-        $result = mysqli_query($conn, $sql);
-        $orders = [];
-        while($row = mysqli_fetch_assoc($result)){
-            $orders[] = $row;
-        }
-        return $orders;
-    }
-
+    mysqli_stmt_execute($stmt);
+    return mysqli_stmt_get_result($stmt);
+}
+//task2-23-54253-3(count orders)
+function countOrders(){
+    $con = getConnection();
+    $result = mysqli_query($con, "select count(*) as total from orders");
+    $row = mysqli_fetch_assoc($result);
+    return $row['total'];
+}
 ?>
