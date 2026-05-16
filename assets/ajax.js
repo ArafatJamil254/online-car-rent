@@ -33,6 +33,7 @@ function deleteMemberAjax(id){
     }   
 }
 
+
 // Task 1 - 23-53651-3
 // JS validation for registration and login
 
@@ -105,3 +106,63 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+// task1-23-53651-3 AJAX category browsing
+document.addEventListener("DOMContentLoaded", function () {
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    const resultBox = document.getElementById("categoryResult");
+
+    if (categoryButtons.length === 0 || !resultBox) {
+        return;
+    }
+
+    function safeText(value) {
+        return String(value ?? "")
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+    }
+
+    categoryButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const type = button.getAttribute("data-type");
+            resultBox.innerHTML = "<p>Loading cars...</p>";
+
+            fetch("../api/categoryCars.php?type=" + encodeURIComponent(type))
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    if (!data.success || data.cars.length === 0) {
+                        resultBox.innerHTML = "<p>No cars found in this category.</p>";
+                        return;
+                    }
+
+                    let html = "";
+
+                    data.cars.forEach(function (car) {
+                        const imagePath = car.image_path ? "../" + car.image_path : "../assets/no-car.png";
+
+                        html += `
+                            <div class="car-card">
+                                <img src="${safeText(imagePath)}" alt="Car Image">
+                                <h3>${safeText(car.name)}</h3>
+                                <p>Model: ${safeText(car.model)}</p>
+                                <p>Type: ${safeText(car.type)}</p>
+                                <p>Price/Day: ${safeText(car.price_per_day)} BDT</p>
+                                <p>Status: ${safeText(car.availability_status)}</p>
+                            </div>
+                        `;
+                    });
+
+                    resultBox.innerHTML = html;
+                })
+                .catch(function () {
+                    resultBox.innerHTML = "<p>Something went wrong while loading cars.</p>";
+                });
+        });
+    });
+});
