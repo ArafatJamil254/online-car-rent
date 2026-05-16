@@ -4,25 +4,14 @@
         header('location: login.php');
         exit;
     }
+    include('header.php');
     require_once('../models/orderModel.php');
 
     $user_id = $_SESSION['user_id'];
     $orders  = getRentalHistoryByUser($user_id);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>My Rental History</title>
-    <link rel="stylesheet" href="../assets/styles.css"/>
-</head>
-<body>
 
-    <nav>
-        <a href="home.php">Home</a>
-        <a href="rental_history.php">My Rentals</a>
-        <a href="../controllers/logout.php">Logout</a>
-    </nav>
 
     <h2>My Rental History</h2>
     <p>Welcome, <strong><?php echo $_SESSION['name']; ?></strong></p>
@@ -68,5 +57,4 @@
 
     <?php } ?>
 
-</body>
-</html>
+<?php include('footer.php');?>

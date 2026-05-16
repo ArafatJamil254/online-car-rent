@@ -5,6 +5,7 @@
         header('location: login.php');
         exit;
     }
+    include('header.php');
 
    if(!isset($_GET['car_id']) || empty($_GET['car_id'])){
     echo "Car not found! Missing car ID.";
@@ -20,19 +21,6 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Place Order</title>
-    <link rel="stylesheet" href="../assets/styles.css"/>
-</head>
-<body>
-
-    <nav>
-        <a href="home.php">Home</a>
-        <a href="rental_history.php">My Rentals</a>
-        <a href="../controllers/authController.php?action=logout">Logout</a>
-    </nav>
 
     <h2>Book: <?php echo $car['name']; ?> (<?php echo $car['model']; ?>)</h2>
     <p>Price per day: <strong>BDT <?php echo $car['price_per_day']; ?></strong></p>
@@ -59,5 +47,4 @@
 
     <script src="../assets/order.js"></script>
 
-</body>
-</html>
+<?php include('footer.php');?>

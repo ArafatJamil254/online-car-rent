@@ -4,6 +4,7 @@
         header('location: login.php');
         exit;
     }
+    include('header.php');
     require_once('../models/orderModel.php');
 
     $order_id = $_GET['order_id'];
@@ -20,19 +21,7 @@
     }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Payment Successful</title>
-    <link rel="stylesheet" href="../assets/styles.css"/>
-</head>
-<body>
 
-    <nav>
-        <a href="home.php">Home</a>
-        <a href="rental_history.php">My Rentals</a>
-        <a href="../controller/logout.php">Logout</a>
-    </nav>
 
     <div class="success-box">
         <h2>&#10003; Payment Successful!</h2>
@@ -47,5 +36,4 @@
 
     <a class="btn" href="home.php">Back to Home</a>
 
-</body>
-</html>
+<?php include('footer.php');?>

@@ -4,6 +4,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member') {
     header('location: login.php');
     exit;
 }
+include('header.php');
 require_once('../models/orderModel.php');
 
 $order_id = $_GET['order_id'];
@@ -25,21 +26,7 @@ if ($order['status'] != 'pending') {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Payment</title>
-    <link rel="stylesheet" href="../assets/styles.css" />
-</head>
-
-<body>
-
-    <nav>
-        <a href="home.php">Home</a>
-        <a href="rental_history.php">My Rentals</a>
-        <a href="../controllers/authController.php?action=logout">Logout</a>
-    </nav>
+ 
 
     <h2>Payment</h2>
 
@@ -69,6 +56,4 @@ if ($order['status'] != 'pending') {
 
     <script src="../assets/payment.js"></script>
 
-</body>
-
-</html>
+<?php include('footer.php')?>
