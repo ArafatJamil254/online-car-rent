@@ -1,5 +1,5 @@
 <?php
-require_once('db.php');
+require_once __DIR__ . '/db.php';
 //task2-23-54253-3(get all orders)
 function getAllOrders($status='', $date=''){
     $con = getConnection();
