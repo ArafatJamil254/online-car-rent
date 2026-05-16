@@ -466,3 +466,41 @@ tr:nth-child(even) {
 .category-btn:hover {
     background: #1558c0;
 }
+
+/* task1-23-53651-3 profile page */
+.profile-box {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 25px;
+    align-items: start;
+    margin-top: 15px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #1f6feb;
+    background: #f1f1f1;
+}
+
+.error-msg {
+    background: #ffe5e5;
+    color: #b00020;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.success-msg {
+    background: #e6ffed;
+    color: #137333;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+@media (max-width: 700px) {
+    .profile-box {
+        grid-template-columns: 1fr;
+    }
+}
