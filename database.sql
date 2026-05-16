@@ -147,3 +147,12 @@ INSERT INTO `cars` (`name`, `model`, `type`, `price_per_day`, `availability_stat
 ('Honda Civic',     'RS 2023',      'Private car', 4000.00, 'unavailable', 'Sporty sedan currently in maintenance'),
 ('Toyota Land Cruiser', 'V8 2022',  'SUV',         9000.00, 'available',   'Premium SUV for off-road trips'),
 ('Mercedes-Benz',   'E-Class 2023', 'Luxury car',  12000.00,'available',   'Executive luxury sedan');
+
+CREATE TABLE IF NOT EXISTS remember_tokens (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  token_hash VARCHAR(255) NOT NULL,
+  expires_at DATETIME NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
