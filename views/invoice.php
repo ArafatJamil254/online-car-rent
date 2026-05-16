@@ -31,7 +31,7 @@
     <nav>
         <a href="home.php">Home</a>
         <a href="rental_history.php">My Rentals</a>
-        <a href="../controller/logout.php">Logout</a>
+        <a href="../controllers/authController.php?action=logout">Logout</a>
     </nav>
 
     <h2>Invoice</h2>

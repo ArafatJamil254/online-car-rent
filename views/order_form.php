@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once(__DIR__.'\..\models\carModel.php');
+    require_once(__DIR__.'/../models/carModel.php');
     if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
         header('location: login.php');
         exit;
@@ -30,7 +30,7 @@
     <nav>
         <a href="home.php">Home</a>
         <a href="rental_history.php">My Rentals</a>
-        <a href="../controller/logout.php">Logout</a>
+        <a href="../controllers/authController.php?action=logout">Logout</a>
     </nav>
 
     <h2>Book: <?php echo $car['name']; ?> (<?php echo $car['model']; ?>)</h2>

@@ -5,7 +5,7 @@
     require_once('../models/carModel.php');
 
     if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
-        header('location: ../view/login.php');
+        header('location: ../views/login.php');
         exit;
     }
 

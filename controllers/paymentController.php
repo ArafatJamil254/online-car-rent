@@ -4,7 +4,7 @@
     require_once('../models/paymentModel.php');
 
     if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
-        header('location: ../view/login.php');
+        header('location: ../views/login.php');
         exit;
     }
 

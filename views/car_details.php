@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once(__DIR__.'\..\models\carModel.php');
+    require_once(__DIR__.'/../models/carModel.php');
     if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
         header('location: login.php');
         exit;
@@ -36,7 +36,7 @@
     <h2><?php echo $car['name']; ?> — <?php echo $car['model']; ?></h2>
 
     <?php if($car['image_path'] != ""){ ?>
-        <img class="car-img" src="../assets/cars<?php echo $car['image_path']; ?>" alt="Car Image">
+        <img class="car-img" src="../<?php echo $car['image_path']; ?>"> alt="Car Image">
     <?php } ?>
 
     <div class="car-info">

@@ -1,7 +1,7 @@
 <?php
 require_once('../models/carModel.php');
 if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
-        header('location: ../view/login.php');
+        header('location: ../views/login.php');
     }
 
 if(isset($_POST['save_car'])){
