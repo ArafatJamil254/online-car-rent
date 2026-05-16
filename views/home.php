@@ -1,6 +1,7 @@
 <?php
+    session_start();
     if(!isset($_SESSION['user_id'])){
-        header("location: ../views/login.php");
+        header("location: login.php");
         exit;
     }
     include('header.php');
