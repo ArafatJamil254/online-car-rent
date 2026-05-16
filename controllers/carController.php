@@ -1,8 +1,11 @@
 <?php
+session_start();
 require_once('../models/carModel.php');
+
 if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
-        header('location: ../view/login.php');
-    }
+    header('location: ../views/login.php');
+    exit;
+}
 
 if(isset($_POST['save_car'])){
     $id = $_POST['id'];
@@ -21,7 +24,7 @@ if(isset($_POST['save_car'])){
     }else if($price <= 0){
         $error = "Price must be positive";
     }
-    
+
     if(isset($_FILES['image']) && $_FILES['image']['name'] != ''){
         $img = uploadImage($_FILES['image'], 'cars');
         if($img == 'type_error'){ $error = "Only JPG/PNG image allowed"; }
@@ -32,13 +35,13 @@ if(isset($_POST['save_car'])){
         header("location: ../views/car_form.php?id=$id&error=" . urlencode($error));
         exit;
     }
-    $car = ['id'=>$id, 
-            'name'=>$name, 
-            'model'=>$model, 
-            'type'=>$type, 
-            'price_per_day'=>$price, 
-            'availability_status'=>$status, 
-            'image_path'=>$image, 
+    $car = ['id'=>$id,
+            'name'=>$name,
+            'model'=>$model,
+            'type'=>$type,
+            'price_per_day'=>$price,
+            'availability_status'=>$status,
+            'image_path'=>$image,
             'description'=>$description
         ];
 
@@ -48,6 +51,7 @@ if(isset($_POST['save_car'])){
         updateCar($car);
     }
     header("location: ../views/manage_cars.php?success=Car saved successfully");
+    exit;
 }
 
 function uploadImage($file, $folder){
@@ -64,7 +68,6 @@ function uploadImage($file, $folder){
     $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
     $name = time() . '_' . rand(1,999) . '.' . $ext;
     $target = '../public/uploads/' . $folder . '/' . $name;
-
     if(move_uploaded_file($file['tmp_name'], $target)){
         return 'public/uploads/' . $folder . '/' . $name;
     }
@@ -86,5 +89,6 @@ if(isset($_GET['delete'])){
     }
     deleteCar($id);
     header("location: ../views/manage_cars.php?success=Car deleted");
+    exit;
 }
-?>    
+?>
