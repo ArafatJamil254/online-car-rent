@@ -1,0 +1,157 @@
+/* ---- Post Blog Form ---- */
+.post-form-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+}
+
+.post-form-box h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.post-form-box input[type="text"],
+.post-form-box textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.2s ease;
+}
+
+.post-form-box input[type="text"]:focus,
+.post-form-box textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.post-form-box textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.post-form-box button {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.post-form-box button:hover {
+    background-color: #1a252f;
+}
+
+/* Small error messages under inputs */
+.field-error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: none;
+}
+
+/* ---- Section Heading ---- */
+.section-heading {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    border-bottom: 2px solid #2c3e50;
+    padding-bottom: 8px;
+}
+
+/* ---- Blog Post Cards ---- */
+.blog-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+    transition: box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.blog-card h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 6px;
+}
+
+.blog-card .meta {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.blog-card .content {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.blog-card .card-footer {
+    margin-top: 12px;
+    text-align: right;
+}
+
+/* Delete button */
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* No blogs message */
+.no-blogs {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 30px;
+}
+
+/* Loading spinner text */
+#loading-msg {
+    text-align: center;
+    color: #888;
+    display: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+    .post-form-box {
+        padding: 15px;
+    }
+
+    .blog-card {
+        padding: 14px 16px;
+    }
+
+    .blog-card h3 {
+        font-size: 16px;
+    }
+
+    .section-heading {
+        font-size: 18px;
+    }
+}
