@@ -16,7 +16,7 @@ include('header.php');
         $image = !empty($car['image_path']) ? "../" . $car['image_path'] : "../assets/no-car.png";
     ?>
     <div class="car-card">
-        <img src="<?php echo htmlspecialchars($image); ?>" width="150" alt="Car Image">
+        <img class="car-img "src="<?php echo htmlspecialchars($image); ?>" alt="Car Image">
         <h3><?php echo htmlspecialchars($car['name']); ?> — <?php echo htmlspecialchars($car['model']); ?></h3>
         <p><strong>Type:</strong> <?php echo htmlspecialchars($car['type']); ?></p>
         <p><strong>Price:</strong> BDT <?php echo htmlspecialchars($car['price_per_day']); ?> / day</p>
