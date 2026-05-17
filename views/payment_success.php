@@ -1,0 +1,39 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'member'){
+        header('location: login.php');
+        exit;
+    }
+    include('header.php');
+    require_once('../models/orderModel.php');
+
+    $order_id = $_GET['order_id'];
+    $order    = getOrderById($order_id);
+
+    if(!$order){
+        echo "Order not found!";
+        exit;
+    }
+
+    if($order['user_id'] != $_SESSION['user_id']){
+        echo "Unauthorized!";
+        exit;
+    }
+?>
+
+
+
+    <div class="success-box">
+        <h2>&#10003; Payment Successful!</h2>
+        <p><strong>Order ID:</strong> #<?php echo $order['id']; ?></p>
+        <p><strong>Car:</strong> <?php echo $order['car_name']; ?> — <?php echo $order['model']; ?></p>
+        <p><strong>Start Date:</strong> <?php echo $order['start_date']; ?></p>
+        <p><strong>End Date:</strong> <?php echo $order['end_date']; ?></p>
+        <p><strong>Total Cost:</strong> BDT <?php echo $order['total_cost']; ?></p>
+        <p><strong>Payment Method:</strong> <?php echo str_replace('_', ' ', strtoupper($order['payment_method'])); ?></p>
+        <p><strong>Status:</strong> <span class="badge badge-confirmed"><?php echo strtoupper($order['status']); ?></span></p>
+    </div>
+
+    <a class="btn" href="home.php">Back to Home</a>
+
+<?php include('footer.php');?>

@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+
+public/uploads/cars/*
+public/uploads/profiles/*
+
+!public/uploads/cars/.gitkeep
+!public/uploads/profiles/.gitkeep
