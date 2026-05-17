@@ -4,7 +4,7 @@
 
     // If user is not logged in, send them to login page
     if(!isset($_SESSION['user_id'])){
-        header('location: login.php');
+        header('location: home.php');
         exit();
     }
     require_once('../models/blogModel.php');

@@ -1,19 +1,5 @@
 <?php
-
-    // ============================================================
-    //  Blog Controller - Handles ALL blog actions (no api/ needed)
-    // ============================================================
-    //  This file handles both:
-    //    1. Regular form submits (redirects back to blog page)
-    //    2. AJAX requests (returns JSON response)
-    //
-    //  Actions:
-    //    - blog_submit  (POST form) → Add blog (regular form)
-    //    - action=add   (POST JSON) → Add blog (AJAX)
-    //    - action=delete(POST JSON) → Delete blog (AJAX)
-    // ============================================================
-
-    session_start();
+ session_start();
     require_once('../models/blogModel.php');
 
     // Helper: detect if request is AJAX
@@ -29,18 +15,13 @@
         exit();
     }
 
-
-    // ============================================================
-    //  HANDLE AJAX POST REQUESTS (JSON body)
-    // ============================================================
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-        // --- Try to read JSON body (AJAX sends JSON) ---
+        //Try to read JSON body (AJAX sends JSON)
         $rawInput  = file_get_contents('php://input');
         $jsonData  = json_decode($rawInput, true);
         $isAjax    = ($jsonData !== null && isset($jsonData['action']));
 
-        // ========== AJAX: ADD BLOG ==========
         if($isAjax && $jsonData['action'] == 'add'){
 
             // Check login
@@ -74,8 +55,6 @@
             }
         }
 
-
-        // ========== AJAX: DELETE BLOG ==========
         if($isAjax && $jsonData['action'] == 'delete'){
 
             // Check login
@@ -101,10 +80,6 @@
             }
         }
 
-
-        // ============================================================
-        //  HANDLE REGULAR FORM SUBMIT (non-AJAX fallback)
-        // ============================================================
         if(isset($_POST['blog_submit'])){
 
             // Check login

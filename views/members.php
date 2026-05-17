@@ -2,7 +2,8 @@
 session_start();
     require_once __DIR__ . '/../models/userModel.php';
     if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
-        header('location: login.php');
+        header('location: home.php');
+        exit();
     }
     include('header.php');
     $members = getAllMembers();
