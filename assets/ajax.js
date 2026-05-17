@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <p>Type: ${safeText(car.type)}</p>
                                 <p>Price/Day: ${safeText(car.price_per_day)} BDT</p>
                                 <p>Status: ${safeText(car.availability_status)}</p>
+                                <a href="car_details.php?car_id=${encodeURIComponent(car.id)}">View Details</a>
                             </div>
                         `;
                     });

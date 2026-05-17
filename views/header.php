@@ -11,7 +11,7 @@
         <?php if(isset($_SESSION['user_id']) && $_SESSION['role'] == 'member'){ ?>
 
             <a href="home.php">Home</a>
-            <a href="car_details.php">Browse Cars</a>
+            <a href="browseCars.php">Browse Cars</a>
             <a href="rental_history.php">My Rentals</a>
             <a href="profile.php">Profile</a>
             <a href="blog.php">Blog</a>
