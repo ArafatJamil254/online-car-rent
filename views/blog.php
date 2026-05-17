@@ -7,6 +7,7 @@
         header('location: login.php');
         exit();
     }
+    require_once('../models/blogModel.php');
 
     // Get current user info from session
     $current_user_id = $_SESSION['user_id'];
@@ -20,37 +21,12 @@
     $csrf_token = $_SESSION['csrf_token'];
 
     // Include the blog model to fetch all blog posts
-    require_once('../model/blogModel.php');
     $blogs = getAllBlogs();
+    include('header.php');
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Page - Car Rent</title>
-    <!-- Shared styles (reset, navbar, container, alerts) -->
-    <link rel="stylesheet" href="../assets/css/shared.css">
-    <!-- Blog-specific styles (form, cards, delete button, etc.) -->
-    <link rel="stylesheet" href="../assets/css/blog.css">
-</head>
-<body>
+<
 
-    <!-- Navigation Bar -->
-    <div class="navbar">
-        <span class="brand">Car Rent</span>
-        <div class="nav-links">
-            <a href="home.php">Home</a>
-            <a href="blog.php" class="active">Blog</a>
-            <?php if($current_role == 'admin'): ?>
-                <a href="admin_dashboard.php">Admin Panel</a>
-            <?php else: ?>
-                <a href="profile.php">My Orders</a>
-            <?php endif; ?>
-            <a href="../controller/logout.php">Logout (<?php echo htmlspecialchars($current_name, ENT_QUOTES, 'UTF-8'); ?>)</a>
-        </div>
-    </div>
 
     <!-- Main Content -->
     <div class="container">
@@ -146,5 +122,4 @@
     <!-- External JS file for blog form submission, deletion, and rendering -->
     <script src="../assets/js/blog.js"></script>
 
-</body>
-</html>
+<?php include('footer.php');?>

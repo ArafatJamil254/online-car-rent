@@ -14,7 +14,7 @@
     // ============================================================
 
     session_start();
-    require_once('../model/blogModel.php');
+    require_once('../models/blogModel.php');
 
     // Helper: detect if request is AJAX
     function isAjaxRequest() {
@@ -109,7 +109,7 @@
 
             // Check login
             if(!isset($_SESSION['user_id'])){
-                header('location: ../view/blog.php?error=auth');
+                header('location: ../views/blog.php?error=auth');
                 exit();
             }
 
@@ -126,24 +126,24 @@
 
             // Server-side validation
             if($title == "" || $content == ""){
-                header('location: ../view/blog.php?error=empty');
+                header('location: ../views/blog.php?error=empty');
                 exit();
             }
             if(strlen($title) > 255){
-                header('location: ../view/blog.php?error=title_long');
+                header('location: ../views/blog.php?error=title_long');
                 exit();
             }
             if(strlen($content) > 10000){
-                header('location: ../view/blog.php?error=content_long');
+                header('location: ../views/blog.php?error=content_long');
                 exit();
             }
 
             $status = addBlog($user_id, $title, $content);
 
             if($status){
-                header('location: ../view/blog.php?success=1');
+                header('location: ../views/blog.php?success=1');
             } else {
-                header('location: ../view/blog.php?error=db');
+                header('location: ../views/blog.php?error=db');
             }
             exit();
         }
@@ -151,7 +151,7 @@
 
 
     // If nothing matched, just go to blog page
-    header('location: ../view/blog.php');
+    header('location: ../views/blog.php');
     exit();
 
 ?>
