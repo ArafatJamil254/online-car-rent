@@ -13,11 +13,9 @@ include('header.php');
     <?php
     $cars = getAllCars();
     while($car = mysqli_fetch_assoc($cars)){
+        $image = !empty($car['image_path']) ? "../" . $car['image_path'] : "../assets/no-car.png";
     ?>
     <div class="car-card">
-        <?php
-            $image = !empty($car['image_path']) ? "../" . $car['image_path'] : "../assets/no-car.png";
-        ?>
         <img src="<?php echo htmlspecialchars($image); ?>" width="150" alt="Car Image">
         <h3><?php echo htmlspecialchars($car['name']); ?> — <?php echo htmlspecialchars($car['model']); ?></h3>
         <p><strong>Type:</strong> <?php echo htmlspecialchars($car['type']); ?></p>

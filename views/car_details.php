@@ -7,11 +7,6 @@ if(!isset($_SESSION['user_id']) ){
 }
 include('header.php');
 
-// if(!isset($_REQUEST['car_id']) || empty($_REQUEST['car_id'])){
-//     header('location: browseCars.php');
-//     exit;
-//}
-
 $car_id = $_REQUEST['id'];
 $result = getCarById($car_id);
 $car = mysqli_fetch_assoc($result);
@@ -29,7 +24,7 @@ if(!$car){
     <?php
         $image = !empty($car['image_path']) ? "../" . $car['image_path'] : "../assets/no-car.png";
     ?>
-        <img src="<?php echo htmlspecialchars($image); ?>" width="500" alt="Car Image">
+        <img class="car-img" src="<?php echo htmlspecialchars($image); ?>" alt="Car Image">
 
     <div class="car-info">
         <p><strong>Type:</strong> <?php echo htmlspecialchars($car['type']); ?></p>
