@@ -1,7 +1,6 @@
 <?php
     require_once('db.php');
 
-
     // Get all blog posts from the database (newest first)
     function getAllBlogs(){
         $con = getConnection();

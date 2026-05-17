@@ -1,14 +1,6 @@
-/**
- * blog.js - Client-side JavaScript for Task 4 Blog Feature
- * Handles: AJAX form submission, AJAX delete, blog list refresh, JS validation
- *
- * All AJAX calls go to controller/blogPostCheck.php (no api/ folder needed).
- * Uses POST with JSON body containing an "action" parameter.
- */
-
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- References to DOM elements ---
+    //References to DOM elements
     const blogForm      = document.getElementById('blogForm');
     const titleInput    = document.getElementById('blogTitle');
     const contentInput  = document.getElementById('blogContent');
@@ -23,11 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Controller URL - same file handles both regular form and AJAX
     const CONTROLLER_URL = '../controllers/blogPostCheck.php';
-
-
-    // ===================================================
-    //  JS VALIDATION - Blog Post Form
-    // ===================================================
 
     function validateBlogForm() {
         let isValid = true;
@@ -75,11 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
             contentError.style.display = 'none';
         }
     });
-
-
-    // ===================================================
-    //  AJAX - Submit Blog Post (POST with action=add)
-    // ===================================================
 
     blogForm.addEventListener('submit', function (e) {
         e.preventDefault(); // Prevent default form submission
@@ -146,15 +128,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
-    // ===================================================
-    //  AJAX - Delete Blog Post (POST with action=delete)
-    // ===================================================
-
-    /**
-     * Delete a blog post by ID via AJAX.
-     * Called from onclick in the delete button.
-     */
     window.deleteBlog = function (blogId) {
         // Confirm before deleting
         if (!confirm('Are you sure you want to delete this blog post?')) {
@@ -209,10 +182,6 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
 
-    // ===================================================
-    //  RENDER - Blog list from JSON data
-    // ===================================================
-
     function renderBlogList(blogs) {
         if (!blogs || blogs.length === 0) {
             blogList.innerHTML = '<div class="no-blogs">No blog posts yet. Be the first to share your experience!</div>';
@@ -252,11 +221,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         blogList.innerHTML = html;
     }
-
-
-    // ===================================================
-    //  UTILITY - Escape HTML to prevent XSS
-    // ===================================================
 
     function escapeHtml(text) {
         const div = document.createElement('div');

@@ -757,3 +757,231 @@ body > form label,
     margin-right: 0;
   }
 }
+
+/* Blog page - Task 4 */
+.container > h1 {
+  margin: 0 0 24px;
+  padding: 34px 28px;
+  color: #ffffff;
+  background:
+    linear-gradient(rgba(9, 31, 51, 0.82), rgba(15, 47, 74, 0.78)),
+    linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+  border-radius: var(--radius);
+  box-shadow: 0 14px 28px rgba(15, 47, 74, 0.14);
+  font-size: 34px;
+  letter-spacing: 0.3px;
+}
+
+.container > h1::before {
+  content: "✍️ ";
+}
+
+.post-form-box {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(15, 47, 74, 0.08);
+  padding: 24px;
+  margin: 24px 0 28px;
+  border-top: 5px solid var(--accent);
+}
+
+.post-form-box h2,
+.section-heading {
+  color: var(--primary);
+  margin-bottom: 18px;
+}
+
+.post-form-box h2::after,
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 62px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 999px;
+  margin-top: 10px;
+}
+
+#blogForm {
+  max-width: none;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+#blogForm input[type="text"],
+#blogForm textarea {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+}
+
+#blogForm textarea {
+  min-height: 170px;
+  line-height: 1.6;
+}
+
+#blogForm button[type="submit"] {
+  min-width: 145px;
+  margin-top: 6px;
+}
+
+.field-error {
+  display: none;
+  margin: -7px 0 12px;
+  color: #b91c1c;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+#loading-msg {
+  display: none;
+  margin-top: 12px;
+  padding: 10px 12px;
+  color: var(--primary);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#form-feedback {
+  margin-top: 12px;
+}
+
+.alert {
+  padding: 12px 14px;
+  margin: 14px 0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.alert-success {
+  color: #166534;
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+}
+
+.alert-error {
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+#blogList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.blog-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(15, 47, 74, 0.08);
+  padding: 22px;
+  overflow: hidden;
+  transition: 0.2s ease;
+}
+
+.blog-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent), var(--primary-light));
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(15, 47, 74, 0.14);
+}
+
+.blog-card h3 {
+  margin: 4px 0 8px;
+  color: var(--primary);
+  font-size: 21px;
+}
+
+.blog-card .meta {
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  color: var(--muted);
+  border-bottom: 1px solid #edf2f7;
+  font-size: 13px;
+}
+
+.blog-card .meta strong {
+  color: var(--accent-dark);
+}
+
+.blog-card .content {
+  color: #374151;
+  line-height: 1.7;
+  font-size: 15px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.card-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #edf2f7;
+  text-align: right;
+}
+
+.btn-delete {
+  min-width: 95px;
+  padding: 9px 14px;
+  background: var(--danger);
+  color: #ffffff;
+  box-shadow: 0 8px 16px rgba(220, 38, 38, 0.18);
+}
+
+.btn-delete:hover {
+  background: #991b1b;
+  color: #ffffff;
+}
+
+.no-blogs {
+  grid-column: 1 / -1;
+  padding: 28px;
+  text-align: center;
+  color: var(--muted);
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 18px;
+  box-shadow: 0 8px 18px rgba(15, 47, 74, 0.05);
+  font-weight: bold;
+}
+
+@media (max-width: 650px) {
+  .container > h1 {
+    padding: 26px 18px;
+    font-size: 27px;
+  }
+
+  .post-form-box,
+  .blog-card {
+    padding: 18px;
+  }
+
+  #blogList {
+    grid-template-columns: 1fr;
+  }
+
+  .card-footer {
+    text-align: left;
+  }
+
+  .btn-delete,
+  #blogForm button[type="submit"] {
+    width: 100%;
+  }
+}
