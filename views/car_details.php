@@ -7,12 +7,12 @@ if(!isset($_SESSION['user_id']) ){
 }
 include('header.php');
 
-if(!isset($_REQUEST['car_id']) || empty($_REQUEST['car_id'])){
-    header('location: browseCars.php');
-    exit;
-}
+// if(!isset($_REQUEST['car_id']) || empty($_REQUEST['car_id'])){
+//     header('location: browseCars.php');
+//     exit;
+//}
 
-$car_id = (int)$_REQUEST['car_id'];
+$car_id = $_REQUEST['id'];
 $result = getCarById($car_id);
 $car = mysqli_fetch_assoc($result);
 
@@ -26,9 +26,10 @@ if(!$car){
 <div class="container">
     <h2><?php echo htmlspecialchars($car['name']); ?> — <?php echo htmlspecialchars($car['model']); ?></h2>
 
-    <?php if($car['image_path'] != ''){ ?>
-        <img class="car-img" src="../<?php echo htmlspecialchars($car['image_path']); ?>" alt="Car Image">
-    <?php } ?>
+    <?php
+        $image = !empty($car['image_path']) ? "../" . $car['image_path'] : "../assets/no-car.png";
+    ?>
+        <img src="<?php echo htmlspecialchars($image); ?>" width="500" alt="Car Image">
 
     <div class="car-info">
         <p><strong>Type:</strong> <?php echo htmlspecialchars($car['type']); ?></p>
@@ -37,11 +38,17 @@ if(!$car){
         <p><strong>Description:</strong> <?php echo htmlspecialchars($car['description']); ?></p>
     </div>
 
-    <?php if($car['availability_status'] == 'available'){ ?>
-        <a class="btn" href="order_form.php?car_id=<?php echo $car['id']; ?>">Book This Car</a>
-    <?php } else { ?>
-        <p style="color:red;"><strong>This car is currently unavailable.</strong></p>
-    <?php } ?>
+    <?php
+        if($_SESSION['role']=='member'){
+            if($car['availability_status'] == 'available'){ ?>
+                <a class="btn" href="order_form.php?car_id=<?php echo $car['id']; ?>">Book This Car</a>
+    <?php    
+            } else { ?>
+                <p style="color:red;"><strong>This car is currently unavailable.</strong></p>
+    <?php   }
+        }
+    ?>
+    
 
     <br><br>
     <a href="browseCars.php">← Back to all cars</a>
