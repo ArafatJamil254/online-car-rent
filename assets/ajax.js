@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const type = button.getAttribute("data-type");
             resultBox.innerHTML = "<p>Loading cars...</p>";
 
-            fetch("../api/categoryCars.php?type=" + encodeURIComponent(type))
+            fetch("../controllers/categoryCars.php?type=" + encodeURIComponent(type))
                 .then(function (response) {
                     return response.json();
                 })
@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <p>Type: ${safeText(car.type)}</p>
                                 <p>Price/Day: ${safeText(car.price_per_day)} BDT</p>
                                 <p>Status: ${safeText(car.availability_status)}</p>
+                                <a href="car_details.php?car_id=${encodeURIComponent(car.id)}">View Details</a>
                             </div>
                         `;
                     });

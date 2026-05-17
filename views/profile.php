@@ -2,8 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit;
+    header("Location: home.php");
+    exit();
 }
 
 require_once __DIR__ . '/../models/profileModel.php';

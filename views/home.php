@@ -3,7 +3,7 @@ session_start();
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
-    exit;
+    exit();
 }
 
 require_once __DIR__ . '/../models/carModel.php';
@@ -36,7 +36,7 @@ include('header.php');
                         <p>Type: <?php echo htmlspecialchars($car['type']); ?></p>
                         <p>Price/Day: <?php echo htmlspecialchars($car['price_per_day']); ?> BDT</p>
                         <p>Status: <?php echo htmlspecialchars($car['availability_status']); ?></p>
-                        <a href="car_details.php?id=<?php echo htmlspecialchars($car['id']); ?>">View Details</a>
+                        <a href="car_details.php?car_id=<?php echo htmlspecialchars($car['id']); ?>">View Details</a>
                     </div>
                 <?php } ?>
             <?php } else { ?>
