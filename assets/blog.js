@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // var currentUserId and currentRole are set in blog.php before this script loads
 
     // Controller URL - same file handles both regular form and AJAX
-    const CONTROLLER_URL = '../controller/blogPostCheck.php';
+    const CONTROLLER_URL = '../controllers/blogPostCheck.php';
 
 
     // ===================================================

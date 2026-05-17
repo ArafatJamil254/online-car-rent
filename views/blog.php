@@ -120,6 +120,6 @@
         var currentRole   = '<?php echo htmlspecialchars($current_role, ENT_QUOTES, "UTF-8"); ?>';
     </script>
     <!-- External JS file for blog form submission, deletion, and rendering -->
-    <script src="../assets/js/blog.js"></script>
+    <script src="../assets/blog.js"></script>
 
 <?php include('footer.php');?>
