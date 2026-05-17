@@ -36,7 +36,7 @@ include('header.php');
                         <p>Type: <?php echo htmlspecialchars($car['type']); ?></p>
                         <p>Price/Day: <?php echo htmlspecialchars($car['price_per_day']); ?> BDT</p>
                         <p>Status: <?php echo htmlspecialchars($car['availability_status']); ?></p>
-                        <a href="car_details.php?car_id=<?php echo htmlspecialchars($car['id']); ?>">View Details</a>
+                        <a class="btn" href="car_details.php?id=<?php echo htmlspecialchars($car['id']); ?>">View Details</a>
                     </div>
                 <?php } ?>
             <?php } else { ?>
